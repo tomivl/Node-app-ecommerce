@@ -1,0 +1,21 @@
+body{
+    background: #6A9113;  
+background: -webkit-linear-gradient(to right, #141517, #6A9113);  
+background: linear-gradient(to right, #141517, #6A9113); 
+
+}
+#jumbo{
+    padding: 2em;
+    background-color: white;
+}
+.logo{
+    width: 50%;
+}
+#infocontainer{
+    background-color: antiquewhite;
+}
+#soporteContainer{
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}

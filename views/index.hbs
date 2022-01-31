@@ -1,0 +1,33 @@
+<div class="row">
+    {{#each productos}}
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <img class="rounded-circle mx-auto d-block"  src="{{imgURL}}" alt=".">
+                <h4 class="card-title">
+                    {{title}}
+                </h4>
+                <p>
+                    {{description}}
+                </p>
+                <p> ${{price}}</p>
+               <form action="/carrito/add" >
+                <button id="botonCompra" type="submit" class="btn btn-primary btn-block btn-sm" >comprar</button>
+                
+               </form>
+                
+            </div>
+             
+        </div>
+    </div>
+{{else}}
+<div class="card mx-auto">
+    <div class="card-body">
+        <p class="lead">
+            No hay productos que mostrar aún.
+        </p>
+
+    </div>
+</div>
+    {{/each}}
+</div>
