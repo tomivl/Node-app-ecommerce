@@ -9,11 +9,6 @@ mongoose.connect(MONGODB_URI ||'mongodb://localhost/productos-db-app',{
     useUnifiedTopology: true
 })
 
-// mongoose.connect('mongodb+srv://cluster0.rlwnd.mongodb.net/myFirstDatabase', {
-//     useNewUrlParser : true,
-//     useUnifiedTopology: true
-// })
-
 .then (db => console.log('db connected'))
 .catch(err => console.error(err))
 
