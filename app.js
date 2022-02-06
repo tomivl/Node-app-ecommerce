@@ -17,7 +17,7 @@ if(cluster.isMaster) {
 
 // INICIALIZACIONES
 const app = express()
-require('./database')
+require('./databaseMongoDB')
 require('./config/passport')
 
 //CONFIGURACIONES
@@ -71,15 +71,6 @@ app.get('/info', (req,res) => {
     })
 })
 
-//RUTAS
-app.use(require('./routes/index'))
-app.use(require('./routes/productos'))
-app.use(require('./routes/usuarios'))
-app.use(require('./routes/tienda'))
-app.use(require('./routes/carts'))
-app.use(require('./routes/order'))
-
-
 
 //SERVER
 const server = app.listen(app.get('port'), () => {
@@ -89,18 +80,21 @@ const server = app.listen(app.get('port'), () => {
 //WEBSOCKETS
 const SocketIO = require('socket.io')
 const io = SocketIO(server)
-io.on('connection', async (socket) => {
+io.on('connection', (socket) => {
     console.log('nueva conexion', socket.id)
-
     socket.on('chat:message', (data) => {
         io.sockets.emit('chat:message', data)
     })
+})
 
-socket.emit('messages', await mensajes.getAll());
+//RUTAS
+app.use(require('./routes/index'))
+app.use(require('./routes/productos'))
+app.use(require('./routes/usuarios'))
+app.use(require('./routes/tienda'))
+app.use(require('./routes/carts'))
+app.use(require('./routes/order'))
+app.use(require('./routes/routechat'))
 
-socket.on('new-message', async function(data) {
-    
-    await mensajes.guardar(data); 
-    io.sockets.emit('messages', await mensajes.getAll()); 
-})    
-});
+
+

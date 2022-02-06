@@ -2,10 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const mensajeSchema = Schema({
-    author: Object,
-    text: String,
+    username: String,
+    message: String,
     fyh: String
   });
   
 
-module.exports = mongoose.model('mensajes', mensajeSchema)
+module.exports = mongoose.model('Mensajes', mensajeSchema)
